@@ -1,0 +1,28 @@
+{
+  "title": "Container Monitoring (CPU & RAM)",
+  "schemaVersion": 22,
+  "version": 1,
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Container CPU Usage",
+      "targets": [
+        {
+          "expr": "rate(container_cpu_usage_seconds_total{image!=\"\"}[2m])",
+          "legendFormat": "{{container_label_com_docker_swarm_service_name}}"
+        }
+      ]
+    },
+    {
+      "type": "graph",
+      "title": "Container Memory Usage",
+      "targets": [
+        {
+          "expr": "container_memory_usage_bytes{image!=\"\"}",
+          "legendFormat": "{{container_label_com_docker_swarm_service_name}}"
+        }
+      ]
+    }
+  ]
+}
+
